@@ -2,28 +2,22 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
+import { FilmsListModule } from './films-list/films-list.module';
 
 import { MainComponent } from './main/main.component';
-import { FilmsComponent } from './films/films.component';
-import { DetailsComponent } from './details/details.component';
+import { SharedModule } from '../shared/shared.module';
+
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    MatTabsModule,
-    MatCardModule,
-    MatButtonModule,
-    MatGridListModule
+    FilmsListModule,
+    SharedModule
   ],
   declarations: [
     MainComponent,
-    FilmsComponent,
-    DetailsComponent
   ]
 })
 export class FilmCatalogModule { }

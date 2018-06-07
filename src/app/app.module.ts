@@ -6,10 +6,8 @@ import { AppComponent } from './app.component';
 import { FilmCatalogModule } from './film-catalog/film-catalog.module';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
+import { SharedModule } from './shared/shared.module';
+
 
 @NgModule({
   declarations: [
@@ -18,11 +16,10 @@ import {MatCardModule} from '@angular/material/card';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FilmCatalogModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule
+    SharedModule,
+    FilmCatalogModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

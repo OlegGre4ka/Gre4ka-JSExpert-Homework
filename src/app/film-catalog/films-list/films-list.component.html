@@ -1,0 +1,28 @@
+<mat-card class="menu-card">
+
+  <mat-toolbar class="menu-toolbar">
+    <mat-toolbar-row class="toolbar-row">
+      <span>В избранное добавлено:
+        <span class="warn"> {{countElement}}</span> элементов</span>
+      <span class="example-spacer"></span>
+      <div class="selectABC">
+
+        <mat-form-field>
+          <mat-select placeholder="Сортировка">
+            <!-- <mat-option  [value]="val1" (click)="mySort()">от A до Я</mat-option>
+            <mat-option  [value]="val2" (click)="mySortReverse()">от Я до A </mat-option> -->
+            <mat-option *ngFor="let state of states" (click)="mySort(films, state.value)">{{state.choice}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+</mat-card>
+<div>
+  <mat-grid-list class="grid" cols="3" rowHeight="800px">
+    <mat-grid-tile *ngFor="let film of films">
+      <app-film-item [filmItem]="film" (updateCounter)="addFilmObj($event)"></app-film-item>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
