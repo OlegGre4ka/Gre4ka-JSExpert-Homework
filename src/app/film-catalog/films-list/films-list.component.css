@@ -1,11 +1,46 @@
 .toolbar-row{
     height:90px;
-    background: linear-gradient(to right, rgb(240, 173, 30), rgb(245, 168, 3));
+    background: linear-gradient(to left, #795548, #D7CCC8);
     
 }
+.toAllFilms{
+    margin-left: 200px;
+    /* text-align: right; */
+    color:black;
+}
+.toAllFilms:hover{
+    cursor: pointer;
+    color:red;    
+}
+.toAllFilms:active{
+    cursor: pointer;
+    color:#00897B;    
+}
+.example-full-width{
+    width:600px;
+}
+.select[placeholder]{
+    color:#00897B;
+}
 .warn{
-    color:rgb(238, 17, 17);
+    color:#E91E63;
+}
+.grid{
+    margin-top:40px;
+    
 }
 .selectABC{
     margin-left:100px;
+}
+h5{
+    color:red;
+}
+.btn-addYetFilms{
+    text-align: center;
+    margin-top:40px;
+    margin-bottom:40px;
+    
+}
+.btn-addYetFilms button{
+    background-color: aqua;
 }

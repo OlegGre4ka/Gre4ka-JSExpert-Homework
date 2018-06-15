@@ -10,24 +10,15 @@ export class FilmItemComponent implements OnInit {
   // tslint:disable-next-line:no-input-rename
   @Input('filmItem') film;
   @Output() updateCounter = new EventEmitter<any>();
-  @Output() reduceCounter = new EventEmitter<any>();
 
   filmId;
-  isFavor;
-  isPressed = false;
 
-  addToFavorites(filmId) {
+  addToFavorites(film) {
     this.film.isFavorite = !this.film.isFavorite;
-    this.updateCounter.emit(filmId);
-    this.isPressed = !this.isPressed;
-    console.log(filmId, 'filmObj from FilmItem');
-
-
+    this.updateCounter.emit(film);
+    console.log(film, 'filmObj from FilmItem');
   }
   constructor() { }
 
-  ngOnInit() {
-
-  }
-
+  ngOnInit() { }
 }
