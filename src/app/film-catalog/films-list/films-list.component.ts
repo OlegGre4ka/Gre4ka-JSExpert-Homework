@@ -19,17 +19,18 @@ export class FilmsListComponent implements OnInit {
   secondArgSlice = 6;
   isPressed = false;
   disabled = true;
+  // "фільмів з такою назвою не знайдено"
   alertNoFilm() {
     this.isShowAlert = true;
     setTimeout(() => {
       this.isShowAlert = false;
-    }, 4000);
+    }, 3000);
   }
-
+// відображає повний список фільмів після alertNoFilm()
   displayDefault() {
     setTimeout(() => {
       this.displayedFilmsData = [...this.films];
-    }, 4000);
+    }, 3000);
   }
   toAllFilms() {
     this.displayedFilmsData = [...this.films];
@@ -104,6 +105,7 @@ export class FilmsListComponent implements OnInit {
 
   ngOnInit() {
     this.films = this.filmsService.getFilms();
+    // робимо копію входящого масиву
     this.displayedFilmsData = [...this.films];
   }
 
