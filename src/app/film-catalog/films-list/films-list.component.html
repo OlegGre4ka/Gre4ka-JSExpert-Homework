@@ -1,10 +1,11 @@
+<!-- <app-seach></app-seach> -->
 <mat-card class="menu-card">
-  <!-- <mat-toolbar-row class="toolbar-row"> -->
-
+  
     <form class="example-form toolbar-row">
 
       <mat-form-field align="start" class="example-full-width">
-        <input type="text" matInput #message name="inputName" [(ngModel)]="inputName" (keyup.enter)="searchFilm()" minlength="3"
+          <input type="text" matInput #message name="inputName" [(ngModel)]="inputName"   minlength="3"
+          (keyup.enter)="searchFilm()"
           placeholder="Пошук фільму">
         <!-- [(ngModel)]="message.value" -->
         <mat-hint align="start">
@@ -13,41 +14,26 @@
         <mat-hint align="end" >{{message.value.length}} / 3</mat-hint>
 
       </mat-form-field>
-    <!-- <p class="toAllFilms" (click)="toAllFilms()">До загального списку пісень</p> -->
     <mat-hint class="toAllFilms" align="end" (click)="toAllFilms()">Загальний список фільмів</mat-hint> 
-    </form>
 
-  <!-- </mat-toolbar-row> -->
-<!-- </mat-card> -->
-<br>
-<mat-toolbar class="menu-toolbar">
-
-  <mat-toolbar-row class="toolbar-row">
-    <span>До вибраного додано:
-      <span class="warn"> {{startCounter()}}</span> елементів</span>
-    <span class="example-spacer"></span>
-    <div class="selectABC">
-
-      <mat-form-field>
-        <mat-select class="select" placeholder="Сортування">
-          <!-- <mat-option  [value]="val1" (click)="mySort()">от A до Я</mat-option>
-            <mat-option  [value]="val2" (click)="mySortReverse()">от Я до A </mat-option> -->
-          <mat-option *ngFor="let state of states" class="sort" (click)="mySort(displayedFilmsData, state.value)">{{state.choice}}</mat-option>
+        <mat-select  align="end" class="select" [(value)]="selectedOption" placeholder="Сортування">
+       
+          <mat-option *ngFor="let state of states" class="sort" [value]="state.value" (click) = "mySort()">{{state.choice}}</mat-option>
         </mat-select>
-      </mat-form-field>
-    </div>
-  </mat-toolbar-row>
-</mat-toolbar>
+    </form>
+    </mat-card>
 
-</mat-card>
-<div>
+<!-- якщо ng-container то css правила по класу не працюють??? -->
+<div class="flex-spinner" *ngIf = "renderedFilms">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
 
-  <mat-grid-list class="grid" cols="3" rowHeight="800px">
-    <!-- <mat-grid-tile *ngFor="let film of displayedFilmsData.slice(firstArgSlice, secondArgSlice)"> -->
-    <mat-grid-tile *ngFor="let film of displayedFilmsData|slice:0: secondArgSlice ">
-
-      <app-film-item [filmItem]="film" (updateCounter)="addFilmObj($event)"></app-film-item>
-
+  <mat-grid-list class="grid" cols="4" rowHeight="600px">
+    <mat-grid-tile *ngFor="let film of displayedFilmsData">
+      <!-- | slice:0:secondArgSlice -->
+      <app-film-item [filmItem]="film"></app-film-item>
+      <!-- каунтер пока закоментовано, взвязку з відсутністю поля isFavorite в даних з серверу -->
+      <!-- (updateCounter)="addFilmObj($event)" -->
     </mat-grid-tile>
     <mat-card *ngIf="isShowAlert">
       <h5>
@@ -56,11 +42,8 @@
     </mat-card>
   </mat-grid-list>
 
-
-  <!-- *ngIf="secondArgSlice < displayedFilmsData.length" -->
-  <div class="btn-addYetFilms" *ngIf="secondArgSlice < displayedFilmsData.length">
-    <button mat-stroked-button (click)="addYetFilms()">{{btn_title}}</button>
-    <!-- не можу задати умову щоб встановити  disabled -->
-    <!-- [disabled]=" secondArgSlice < displayedFilmsData.length ? !disabled : disabled" -->
-  </div>
-</div>
+  <div class="btn-addYetFilms" >
+    <button mat-stroked-button (click)="addMoreFilms()">{{btn_title}}</button>
+  <!--   не можу задати умову щоб встановити  disabled
+    [disabled]=" secondArgSlice < displayedFilmsData.length ? !disabled : disabled"-->
+   </div> 

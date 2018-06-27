@@ -3,6 +3,11 @@
     background: linear-gradient(to left, #795548, #D7CCC8);
     
 }
+.flex-spinner{
+    display: flex;
+  justify-content: center;
+}
+
 .toAllFilms{
     margin-left: 200px;
     /* text-align: right; */
@@ -15,6 +20,11 @@
 .toAllFilms:active{
     cursor: pointer;
     color:#00897B;    
+}
+.select{
+    text-align:right;
+    margin-left:800px;
+    width:200px;
 }
 .example-full-width{
     width:600px;
@@ -29,9 +39,7 @@
     margin-top:40px;
     
 }
-.selectABC{
-    margin-left:100px;
-}
+
 h5{
     color:red;
 }
@@ -42,5 +50,6 @@ h5{
     
 }
 .btn-addYetFilms button{
-    background-color: aqua;
+    color:rgb(240, 133, 133);
+    background-color: rgb(39, 39, 180);
 }

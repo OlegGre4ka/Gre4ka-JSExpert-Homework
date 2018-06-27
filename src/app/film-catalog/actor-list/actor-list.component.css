@@ -1,0 +1,13 @@
+.btn-addMoreActors{
+    text-align: center;
+    margin-top:40px;
+    margin-bottom:40px;  
+}
+.btn-addMoreActors button{
+    color:rgb(240, 133, 133);
+    background-color: rgb(39, 39, 180);
+}
+.flex-spinner{
+    display: flex;
+  justify-content: center;
+}

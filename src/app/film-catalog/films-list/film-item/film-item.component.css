@@ -1,13 +1,21 @@
 .example-card {
-    max-width:310px;
-    /* margin-top:100px;     */
-   
-    background: linear-gradient(to right, #00897B, #4DD0E1);
+    /* max-width:310px; */
+    margin:20px;    
+    /* background: linear-gradient(to right, #00897B, #4DD0E1); */
+    /* background-color: rgb(83, 132, 141); */
+    background: linear-gradient(to right, rgb(126, 198, 211), rgb(83, 132, 141));
+    
   }
-
+  .flex-spinner{
+    display: flex;
+  justify-content: center;
+}
 .subtitle, p{
   text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
 .redText{
   color:red;
 }

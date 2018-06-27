@@ -1,0 +1,10 @@
+.example-card{
+    margin:20px;
+    background: linear-gradient(to right, rgb(126, 198, 211), rgb(83, 132, 141));
+    
+}
+.raiting{
+color:rgb(240, 133, 133);
+background-color: rgb(39, 39, 180);
+padding: 5px;
+}

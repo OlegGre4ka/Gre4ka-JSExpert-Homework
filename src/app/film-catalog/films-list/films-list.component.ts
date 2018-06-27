@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FilmService, Film } from '../film.service';
 import { Router } from '@angular/router';
+import { Film } from '../../shared/models/Film';
+import { Moviedb } from '../../shared/models/Moviedb';
+import { Observable, Subject } from 'rxjs';
+import { Result } from '../../shared/models/Result';
+import { FilmService } from '../../service/film.service';
 
 @Component({
   selector: 'app-films-list',
@@ -8,17 +12,26 @@ import { Router } from '@angular/router';
   styleUrls: ['./films-list.component.css']
 })
 export class FilmsListComponent implements OnInit {
+  filmsMoviedb: Moviedb[];
   countElement;
-  films: Film[];
-  displayedFilmsData: Film[];
-  filmFiltered: Film[];
+  // filmList: any;
+  renderedFilms = true;
+  films: Result[] = [];
+  displayedFilmsData: Result[];
+  // displayedFilmsData: Moviedb[];
+
+  // filmFiltered: Film[];
+  filmFiltered: Moviedb[];
+  selectedOption = 'films';
+
+  currentPage = 1;
   inputName = '';
   isShowAlert;
   btn_title = 'Загрузить еще';
-  firstArgSlice = 0;
-  secondArgSlice = 6;
-  isPressed = false;
-  disabled = true;
+  secondArgSlice = 9;
+  // isPressed = false;
+
+
   // "фільмів з такою назвою не знайдено"
   alertNoFilm() {
     this.isShowAlert = true;
@@ -26,19 +39,21 @@ export class FilmsListComponent implements OnInit {
       this.isShowAlert = false;
     }, 3000);
   }
-// відображає повний список фільмів після alertNoFilm()
+  // відображає повний список фільмів після alertNoFilm()
   displayDefault() {
     setTimeout(() => {
+
       this.displayedFilmsData = [...this.films];
     }, 3000);
   }
   toAllFilms() {
     this.displayedFilmsData = [...this.films];
+
   }
+
   searchFilm() {
     this.displayedFilmsData = this.films.filter(film => {
-      // tslint:disable-next-line:no-unused-expression
-      return film.name.toLowerCase().indexOf(this.inputName.toLowerCase().trim()) !== -1;
+      return film.title.toLowerCase().indexOf(this.inputName.toLowerCase().trim()) !== -1;
     });
 
     if (this.displayedFilmsData.length === 0) {
@@ -49,64 +64,103 @@ export class FilmsListComponent implements OnInit {
   }
 
   // кнопка яка додає ще частину фільмів
-  addYetFilms(films) {
-    this.secondArgSlice += 3;
+ // addMoreFilms(films) {
+  //  this.secondArgSlice += 9;
     // this.disabled = this.displayedFilmsData.length === 0 ? '!disabled' : 'disabled';
-  }
+ // }
 
   //  початкова кількість фільмів доданих у Вибране - з сервісу приходить як isFavorite = true
-  startCounter() {
-    this.filmFiltered = this.displayedFilmsData.filter(film => film.isFavorite);
-    return this.countElement = this.filmFiltered.length;
-  }
+  // startCounter() {
+  //   this.filmFiltered = this.displayedFilmsData.filter(film => film.isFavorite);
+  //   return this.countElement = this.filmFiltered.length;
+  // }
 
   // Приймаємо евент з дочірнього і по полю isfavorite = true фіксуємо кількість елементів у Вибраному
-  addFilmObj(filmObj) {
-    console.log(filmObj, 'film from FilmLists');
-    this.filmFiltered = this.displayedFilmsData.filter(film => film.isFavorite);
-    this.countElement = this.filmFiltered.length;
-  }
-
-  // варіант сортування з виводом пунктів меню через *ngFor, як і у оф доке Material
+  // addFilmObj(filmObj) {
+  //   console.log(filmObj, 'film from FilmLists');
+  //   this.filmFiltered = this.displayedFilmsData.filter(film => film.isFavorite);
+  //   this.countElement = this.filmFiltered.length;
+  // }
+ // варіант сортування з виводом пунктів меню через *ngFor, як і у оф доке Material
   // tslint:disable-next-line:member-ordering
   states = [
-    { value: 'ASC', choice: 'от А до Я' },
-    { value: 'DESC', choice: 'от Я до А' }
+    { value: 'films', choice: 'Фільми' },
+    { value: 'actors', choice: 'Актори' }
   ];
+  mySort() {
+    if ( this.selectedOption === 'films' ) {
+      this.router.navigate(['/films-list']);
+      // return displayedFilmsData.sort(this.compareFunc);
+    } else  {
+       this.router.navigate(['/actor-list']);
+     }
+    // return displayedFilmsData.sort(this.compareFunc).reverse();
+    }
 
   // compareFunc -передається як параметр в метод sort()для порівняння елементів, в даному випадку по полю
   // обєкта масива - name
-  compareFunc(current, next) {
-    const x: any = current.name.toLowerCase();
-    const y: any = next.name.toLowerCase();
-    return x > y ? 1 : -1;
-  }
-
-  mySort(displayedFilmsData, value) {
-    if (value === 'ASC') {
-      return displayedFilmsData.sort(this.compareFunc);
-    }
-    return displayedFilmsData.sort(this.compareFunc).reverse();
-  }
-  // варіант з  прописанням кожного пункта меню окремим тегом <mat-option>
-  //  mySort(films) {
-  //   return this.films.sort((current, next) => {
-  //      const x: any = current.name.toLowerCase();
-  //      const y: any = next.name.toLowerCase();
-  //      return x > y ? 1 : -1;
-  //   });
+  // compareFunc(current, next) {
+  //   const x: any = current.name.toLowerCase();
+  //   const y: any = next.name.toLowerCase();
+  //   return x > y ? 1 : -1;
   // }
-
-  // mySortReverse(films) {
-  //    return this.films = this.mySort(films).reverse();
-  // }
-
   constructor(private filmsService: FilmService, private router: Router) { }
 
+
   ngOnInit() {
-    this.films = this.filmsService.getFilms();
-    // робимо копію входящого масиву
-    this.displayedFilmsData = [...this.films];
+    // this.films = this.filmsService.getFilms();
+    this.filmsService.getPopularFilms(this.currentPage)
+      .subscribe(
+        (filmsData) => {
+          filmsData.results.map(result => {
+            this.films.push(
+              {
+                id: result.id,
+                vote_average: result.vote_average,
+                title: result.title,
+                popularity: result.popularity,
+                release_date: result.release_date,
+                overview: result.overview.slice(0, 120) + '...',
+                poster_path: `${this.filmsService.midImgPath}${result.poster_path}`
+              }
+            );
+            // console.log(this.films, 'push Result[]');
+          // Роблю копію і далі працюю з копією
+this.displayedFilmsData = [...this.films];
+this.renderedFilms = false;
+// console.log(this.displayedFilmsData, 'Copy- dispayed');
+          });
+        },
+        err => {
+          console.log('error');
+        });
+
   }
 
+  addMoreFilms() {
+    this.currentPage++;
+    this.filmsService.getPopularFilms(this.currentPage).subscribe(
+      (filmsData) => {
+        filmsData.results.map(result => {
+          this.films.push(
+            {
+              id: result.id,
+              vote_average: result.vote_average,
+              title: result.title,
+              popularity: result.popularity,
+              release_date: result.release_date,
+              overview: result.overview.slice(0, 110) + '...',
+              poster_path: `${this.filmsService.midImgPath}${result.poster_path}`
+            }
+          );
+        // Роблю копію і далі працюю з копією
+this.displayedFilmsData = [...this.films];
+        });
+      },
+      err => {
+        console.log('error');
+      });
 }
+}
+
+
