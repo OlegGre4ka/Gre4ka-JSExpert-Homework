@@ -5,7 +5,7 @@ import { FilmsListComponent } from './films-list.component';
 import { SharedModule } from '../../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-// import { SeachComponent } from '../seach/seach.component';
+import { ActorItemComponent } from './actor-item/actor-item.component';
 
 
 @NgModule({
@@ -19,7 +19,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   declarations: [
     FilmsListComponent,
     FilmItemComponent,
-    // SeachComponent
+    ActorItemComponent
   ],
   exports: [
     FilmsListComponent

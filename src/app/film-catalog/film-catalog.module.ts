@@ -7,7 +7,6 @@ import { FilmsListModule } from './films-list/films-list.module';
 
 import { MainComponent } from './main/main.component';
 import { SharedModule } from '../shared/shared.module';
-import { ActorListModule } from './actor-list/actor-list.module';
 
 @NgModule({
   imports: [
@@ -15,7 +14,6 @@ import { ActorListModule } from './actor-list/actor-list.module';
     HttpClientModule,
     FormsModule,
     FilmsListModule,
-    ActorListModule ,
     SharedModule
   ],
   declarations: [

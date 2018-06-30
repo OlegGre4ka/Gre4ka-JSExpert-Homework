@@ -11,8 +11,7 @@ export class FilmItemComponent implements OnInit {
   @Input('filmItem') film;
   @Output() updateCounter = new EventEmitter<any>();
 
-  filmId;
-
+  // filmId;
   addToFavorites(film) {
     this.film.isFavorite = !this.film.isFavorite;
     this.updateCounter.emit(film);

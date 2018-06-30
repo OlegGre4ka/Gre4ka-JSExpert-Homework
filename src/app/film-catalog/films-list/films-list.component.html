@@ -1,32 +1,33 @@
-<!-- <app-seach></app-seach> -->
 <mat-card class="menu-card">
   
     <form class="example-form toolbar-row">
 
       <mat-form-field align="start" class="example-full-width">
           <input type="text" matInput #message name="inputName" [(ngModel)]="inputName"   minlength="3"
-          (keyup.enter)="searchFilm()"
-          placeholder="Пошук фільму">
-        <!-- [(ngModel)]="message.value" -->
+           (keyup.enter)="searchAll()"
+          placeholder="Пошук">
+          <!-- (keyup.enter)="searchFilm()"  -->
         <mat-hint align="start">
           <strong>Не меньше 3 символів</strong>
         </mat-hint>
         <mat-hint align="end" >{{message.value.length}} / 3</mat-hint>
 
       </mat-form-field>
-    <mat-hint class="toAllFilms" align="end" (click)="toAllFilms()">Загальний список фільмів</mat-hint> 
+    <mat-hint class="toAllFilms" align="end" (click)="toAllActors()" (click)="toAllFilms()">Повернутися до списку</mat-hint> 
 
-        <mat-select  align="end" class="select" [(value)]="selectedOption" placeholder="Сортування">
+        <mat-select  align="end" class="select" [(value)]="selectedOption" placeholder="">
        
-          <mat-option *ngFor="let state of states" class="sort" [value]="state.value" (click) = "mySort()">{{state.choice}}</mat-option>
+          <mat-option *ngFor="let state of states" class="sort" [value]="state.value" (click) = "mySort()"
+          >{{state.choice}}</mat-option>
         </mat-select>
     </form>
     </mat-card>
 
 <!-- якщо ng-container то css правила по класу не працюють??? -->
-<div class="flex-spinner" *ngIf = "renderedFilms">
+<div class="flex-spinner" *ngIf = "renderedSpinner">
     <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
 </div>
+<ng-container *ngIf="isFilms">
 
   <mat-grid-list class="grid" cols="4" rowHeight="600px">
     <mat-grid-tile *ngFor="let film of displayedFilmsData">
@@ -42,8 +43,30 @@
     </mat-card>
   </mat-grid-list>
 
-  <div class="btn-addYetFilms" >
+  <!-- <div class="btn-addYetFilms" >
     <button mat-stroked-button (click)="addMoreFilms()">{{btn_title}}</button>
-  <!--   не можу задати умову щоб встановити  disabled
-    [disabled]=" secondArgSlice < displayedFilmsData.length ? !disabled : disabled"-->
+   </div>  -->
+</ng-container>
+   <!-- <div class="flex-spinner" *ngIf = "renderedActors">
+    <mat-progress-spinner class="spinner" mode="indeterminate"></mat-progress-spinner>
+
+</div> -->
+<ng-container *ngIf="isActors">
+  <mat-grid-list class="grid" cols="5" rowHeight="450px">
+    <mat-grid-tile *ngFor="let actor of displayedActorsData ">
+      <app-actor-item [actorItem]="actor"></app-actor-item>
+    </mat-grid-tile>
+    <mat-card *ngIf="isShowAlert">
+      <h5>
+        Таких акторів не знайдено
+      </h5>
+    </mat-card>
+  </mat-grid-list>
+</ng-container>
+
+  <!-- <div class="btn-addMoreActors">
+    <button mat-stroked-button (click)="addMoreActors()" (click)="addMoreFilms()">{{btn_title}}</button>
+  </div> -->
+ <div class="btn-addYetFilms" >
+    <button mat-stroked-button (click)="addMoreFilms()" (click)="addMoreActors()" >{{btn_title}}</button>
    </div> 
