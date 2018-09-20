@@ -1,4 +1,4 @@
-<mat-card  class="example-card">
+<mat-card class="example-card">
     <mat-card-header>
         <mat-card-title>{{film.title}}</mat-card-title>
         <mat-card-subtitle class="subtitle">{{film.release_date}}</mat-card-subtitle>
@@ -9,18 +9,24 @@
             {{film.overview}}
         </p>
     </mat-card-content>
-    <!-- все що стосується вибірки по Вибране-isFavorite -поки що закоментовано -->
-    <!-- <button mat-button (click)="addColorFavorite()" >
-        <i class="material-icons " [ngClass]="{'favorite':favorite == true }">
+    
+    <button mat-button matTooltip="{{tooltipFavorite}}"
+    class="button_favorite" 
+    (click)="addColorFavorite()"
+    >
+        <i class="material-icons "  [ngClass]="{'favorite':favorite == true }">
             favorite_border
-            </i>
+        </i>
     </button>
-    <button mat-button (click)="addColorBookmark()">
+
+    <button mat-button matTooltip="{{tooltipBookmark}}"
+    class="button_bookmark" 
+    (click)="addColorBookmark()">
         <i class="material-icons" [ngClass]="{'bookmark': bookmark == true }">
             bookmark_border
-            </i>
-    </button> -->
-       
+        </i>
+    </button>
+
     <!-- <mat-card-actions>
         <button mat-button [ngClass]="{'redText':film.isFavorite == true }"  (click)="addToFavorites(film)">{{film.isFavorite ? 'Видалити з вибраного' : 'Додати до вибраного'}}</button>
     </mat-card-actions> -->

@@ -19,7 +19,7 @@
 
 <ng-container *ngIf="isFilms">
 
-  <mat-grid-list class="grid" cols="4" rowHeight="600px">
+  <mat-grid-list class="grid" cols="4" rowHeight="750px">
     <mat-grid-tile *ngFor="let film of displayedFilmsData">
       <app-film-item [filmItem]="film"></app-film-item>
       <!-- каунтер пока закоментовано, взвязку з відсутністю поля isFavorite в даних з серверу -->

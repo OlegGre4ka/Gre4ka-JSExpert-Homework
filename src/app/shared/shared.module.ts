@@ -8,6 +8,7 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -26,7 +27,8 @@ import { FormsModule } from '@angular/forms';
     MatGridListModule,
     MatSelectModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatTooltipModule
     // MatProgressSpinnerModule
   ],
   declarations: [
@@ -43,6 +45,7 @@ import { FormsModule } from '@angular/forms';
     MatSelectModule,
     MatToolbarModule,
     MatIconModule,
+    MatTooltipModule
   ]
 })
 export class SharedModule { }

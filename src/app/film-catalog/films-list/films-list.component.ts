@@ -30,7 +30,7 @@ export class FilmsListComponent implements OnInit {
   currentActorPage = 0;
   inputName;
   isShowAlert;
-  btn_title = 'Загрузить еще';
+  btn_title = 'Завантажити ще';
   isPressed = false;
   // змінні для роботи з actor-item
   actors: ResultActor[] = [];

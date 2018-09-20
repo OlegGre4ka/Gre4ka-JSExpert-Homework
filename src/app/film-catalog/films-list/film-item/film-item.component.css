@@ -1,10 +1,20 @@
 .example-card {
     /* max-width:310px; */
-    margin:20px;    
+    margin-top:40px;  
+    margin-left:20px;
     /* background: linear-gradient(to right, #00897B, #4DD0E1); */
     /* background-color: rgb(83, 132, 141); */
     background: linear-gradient(to right, rgb(126, 198, 211), rgb(83, 132, 141));
     
+  }
+  mat-card-title{
+    margin-top:10px;
+  }
+  .button_favorite{
+    margin-bottom:15px;
+  }
+  .button_bookmark{
+    margin-bottom:15px;
   }
   .flex-spinner{
     display: flex;
@@ -16,11 +26,10 @@
   text-overflow: ellipsis;
 }
 
-.redText{
+/* .redText{
   color:red;
-}
+} */
 .favorite{
-  /* background-color:red; */
   color: red;
 }
 .bookmark{
