@@ -7,6 +7,7 @@ import { FilmsListModule } from './films-list/films-list.module';
 
 import { MainComponent } from './main/main.component';
 import { SharedModule } from '../shared/shared.module';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { SharedModule } from '../shared/shared.module';
   ],
   declarations: [
     MainComponent,
+    DetailsComponent
   ]
 })
 export class FilmCatalogModule { }

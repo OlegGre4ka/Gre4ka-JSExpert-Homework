@@ -7,24 +7,19 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
+// import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   imports: [
     HttpClientModule,
-    MatTabsModule,
-    MatCardModule,
-    MatButtonModule,
-    MatGridListModule,
-    MatSelectModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatProgressSpinnerModule
-  ],
-  declarations: [],
-  exports: [
+    FormsModule,
     MatInputModule,
+    MatFormFieldModule,
     MatTabsModule,
     MatCardModule,
     MatButtonModule,
@@ -32,6 +27,22 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatSelectModule,
     MatToolbarModule,
     MatIconModule
+    // MatProgressSpinnerModule
+  ],
+  declarations: [
+  ],
+  exports: [
+    HttpClientModule,
+    FormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatTabsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatGridListModule,
+    MatSelectModule,
+    MatToolbarModule,
+    MatIconModule,
   ]
 })
 export class SharedModule { }
