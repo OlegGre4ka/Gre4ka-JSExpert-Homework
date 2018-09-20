@@ -31,7 +31,10 @@
       </h5>
     </mat-card>
   </mat-grid-list>
-
+  <!-- кнопку підгрузки потрібно прописати окремо і в Фільми, і окремо в Актори -->
+  <div class="btn-addYetFilms">
+    <button mat-stroked-button (click)="addMoreFilms()" >{{btn_title}}</button>
+  </div>
 </ng-container>
 <!-- <div class="flex-spinner" *ngIf = "renderedActors">
     <mat-progress-spinner class="spinner" mode="indeterminate"></mat-progress-spinner>
@@ -48,8 +51,8 @@
       </h5>
     </mat-card>
   </mat-grid-list>
+  <div class="btn-addYetFilms">
+    <button mat-stroked-button (click)="addMoreActors()" >{{btn_title}}</button>
+  </div>
 </ng-container>
 
-<div class="btn-addYetFilms">
-  <button mat-stroked-button (click)="addMoreFilms()" (click)="addMoreActors()">{{btn_title}}</button>
-</div>
