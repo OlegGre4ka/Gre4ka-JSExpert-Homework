@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Actor } from '../../../shared/models/Actor';
-import { ResultActor } from '../../../shared/models/ResultActor';
+// import { Actor } from '../../shared/models/Actor';
+import { ResultActor } from '../../shared/models/ResultActor';
 
 @Component ({
   selector: 'app-actor-item',

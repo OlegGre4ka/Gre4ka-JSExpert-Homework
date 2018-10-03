@@ -6,43 +6,35 @@
 .flex-spinner{
     display: flex;
   justify-content: center;
+  background-color: rgb(255, 208, 0);
+  padding:20px 20px;
 }
 
-.toAllFilms{
-    margin-left: 220px;
-    /* text-align: right; */
-    color:black;
+
+/* .isFavorite{
+    margin-left:50px;
 }
-.toAllFilms:hover{
+.isFavorite:hover{
     cursor: pointer;
-    color:red;    
-}
-.toAllFilms:active{
-    cursor: pointer;
-    color:#00897B;    
-}
-.select{
-    text-align:right;
-    margin-left:800px;
-    width:200px;
-}
+    color:rgb(3, 219, 21);     
+} */
 .example-full-width{
     width:600px;
 }
-.select[placeholder]{
+/* .select[placeholder]{
     color:#00897B;
 }
 .warn{
     color:#E91E63;
-}
+}*/
 .grid{
     margin-top:40px;
     
 }
 
-h5{
+/* h5{
     color:red;
-}
+}  */
 .btn-addYetFilms{
     text-align: center;
     margin-top:40px;

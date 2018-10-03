@@ -12,7 +12,7 @@
     
     <button mat-button matTooltip="{{tooltipFavorite}}"
     class="button_favorite" 
-    (click)="addColorFavorite()"
+    (click)="addColorFavorite(film.id,film.title)"
     >
         <i class="material-icons "  [ngClass]="{'favorite':favorite == true }">
             favorite_border
@@ -21,7 +21,7 @@
 
     <button mat-button matTooltip="{{tooltipBookmark}}"
     class="button_bookmark" 
-    (click)="addColorBookmark()">
+    (click)="addColorBookmark(film.id,film.title)">
         <i class="material-icons" [ngClass]="{'bookmark': bookmark == true }">
             bookmark_border
         </i>

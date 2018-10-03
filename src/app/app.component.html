@@ -1,24 +1,40 @@
-<mat-toolbar>
-    <mat-toolbar-row>
-      <span>Film Catalog</span>
-      <span class="example-spacer"></span>
-      <a mat-button 
-        *ngFor="let link of links" 
-        [routerLink] = 'link.path' 
-        [routerLinkActive]= 'link.active'> 
-         <mat-icon class="example-icon">{{link.icon}}</mat-icon >{{link.label}}
-    </a>
-    </mat-toolbar-row>
-  </mat-toolbar>
-
+<div class="content-container">
+    <header class="header header-7">
+        <div class="branding">
+            <a routerLink="/" class="nav-link">
+                <clr-icon shape="video-camera"></clr-icon>
+                <span class="title">Film Catalog</span>
+            </a>
+        </div>
  
-    <router-outlet></router-outlet>
+        <app-search></app-search>
+
+        <div class="header-actions">
+            <a routerLink="/main" routerLinkActive="active" class="nav-link text_1">
+                <clr-icon shape="home" size="24" class="is-solid"></clr-icon>
+
+                <span class="text">  Головна  </span>
+            </a>
+            <a routerLink="/films-list" routerLinkActive="active" class="nav-link text_1">
+                <clr-icon shape="film-strip" size="24" class="is-solid"></clr-icon>
+                <span class="text">Фільми</span>
+            </a>
+            <a routerLink="/actors-list" routerLinkActive="active" class="nav-link text_1">
+                <clr-icon shape="star" size="24" class="is-solid"></clr-icon>
+                <span class="text">Актори</span>
+            </a>
+        </div>
+
+    </header>
+    <!-- <nav class="subnav">
+              ...
+          </nav>
+          <div class="content-container">
+              <div class="content-area">
+                  ...
+              </div>
+          </div> -->
+</div>
 
 
-    
-
-
-
-
-    
-  
+<router-outlet></router-outlet>

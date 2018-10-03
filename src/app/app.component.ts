@@ -6,9 +6,8 @@ import { Component} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent  {
-  public links: object[] = [
-    { path: '/main', label: 'Головна', active: 'button-active', icon: 'home'},
-    { path: '/films-list', label: 'Всі фільми', active: 'button-active', icon: 'list_alt'},
-  ];
 
-}
+  }
+
+
+

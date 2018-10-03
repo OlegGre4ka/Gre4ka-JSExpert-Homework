@@ -23,12 +23,16 @@ export class FilmItemComponent implements OnInit {
 // } else  if (this.tooltipFavorite === 'Забрати з Вибраного') {
 //    this.tooltipFavorite = 'Додати у Вибране';
 // }
+// tslint:disable-next-line:max-line-length
+if ( this.favorite === true) {localStorage.setItem(this.film.id + 'favorite', this.film.title); } else {localStorage.removeItem(this.film.id + 'favorite'); }
   }
 
   addColorBookmark() {
     this.bookmark ? this.bookmark = false : this.bookmark = true;
   // tslint:disable-next-line:max-line-length
   this.tooltipBookmark === 'Додати в Закладки' ?  this.tooltipBookmark = 'Забрати з Закладок' : this.tooltipBookmark = 'Додати в Закладки';
+  // tslint:disable-next-line:max-line-length
+  if ( this.bookmark === true) {localStorage.setItem(this.film.id + 'bookmark', this.film.title); } else {localStorage.removeItem(this.film.id + 'bookmark'); }
 
   }
   // filmId;

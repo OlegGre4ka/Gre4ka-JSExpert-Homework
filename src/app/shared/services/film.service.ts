@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { Film } from '../shared/models/Film';
+// import { Film } from '../shared/models/Film';
 import { HttpClient } from '@angular/common/http';
-import { Moviedb } from '../shared/models/Moviedb';
+import { Moviedb } from '../models/Moviedb';
 
 @Injectable({
   providedIn: 'root'

@@ -1,0 +1,27 @@
+<!-- якщо ng-container то css правила по класу не працюють??? -->
+
+<div class="flex-spinner" *ngIf="renderedSpinner">
+  <span class="spinner spinner-inverse">
+    Loading...
+  </span>
+  <span>
+    Loading...
+  </span>
+</div>
+
+<mat-grid-list class="grid" cols="4" rowHeight="750px">
+  <mat-grid-tile *ngFor="let film of displayedFilmsData">
+    <app-film-item [filmItem]="film"></app-film-item>
+    <!-- каунтер пока закоментовано, взвязку з відсутністю поля isFavorite в даних з серверу -->
+    <!-- (updateCounter)="addFilmObj($event)" -->
+  </mat-grid-tile>
+  <mat-card *ngIf="isShowAlert">
+    <h5>
+      Фільмів з такою назвою не знайдено
+    </h5>
+  </mat-card>
+</mat-grid-list>
+<!-- кнопку підгрузки потрібно прописати окремо і в Фільми, і окремо в Актори -->
+<div class="btn-addYetFilms">
+  <button mat-stroked-button (click)="addMoreFilms()">{{btn_title}}</button>
+</div>
