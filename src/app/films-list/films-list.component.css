@@ -1,7 +1,7 @@
 .toolbar-row{
     height:90px;
     background: linear-gradient(to left, #795548, #D7CCC8);
-    
+
 }
 .flex-spinner{
     display: flex;
@@ -16,7 +16,7 @@
 }
 .isFavorite:hover{
     cursor: pointer;
-    color:rgb(3, 219, 21);     
+    color:rgb(3, 219, 21);
 } */
 .example-full-width{
     width:600px;
@@ -29,19 +29,30 @@
 }*/
 .grid{
     margin-top:40px;
-    
+
+}
+.clr-col-12{
+  margin-top:0 !important;
+}
+h5 {color:green; text-align:center;}
+
+.full-list:hover{
+  cursor: pointer;
+  color:purple
+}
+.full-list:active{
+  color:red;
 }
 
-/* h5{
-    color:red;
-}  */
 .btn-addYetFilms{
     text-align: center;
     margin-top:40px;
     margin-bottom:40px;
-    
+
 }
 .btn-addYetFilms button{
     color:rgb(240, 133, 133);
     background-color: rgb(39, 39, 180);
 }
+
+

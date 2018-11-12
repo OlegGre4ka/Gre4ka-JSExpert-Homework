@@ -1,31 +1,39 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 // import { Film } from '../shared/models/Film';
 import { HttpClient } from '@angular/common/http';
 import { Moviedb } from '../models/Moviedb';
+import { Config } from '../models/config';
+import { API_CONFIG } from '../models/api.config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilmService {
 
-  constructor(private http: HttpClient) {}
-apiUrl = 'https://api.themoviedb.org/3';
-apiKey = '0994e7679a856150aadcecf7de489bce';
-movieUrl = `${this.apiUrl}/movie`;
-searchUrl = `${this.apiUrl}/search`;
-params = `&api_key=${this.apiKey}&language=ru-Ru`;
+  constructor(private http: HttpClient,  @Inject(API_CONFIG) public apiConfig: Config) {}
+// apiUrl = 'https://api.themoviedb.org/3';
+// apiKey = '0994e7679a856150aadcecf7de489bce';
+// movieUrl = `${this.apiUrl}/movie`;
+// searchUrl = `${this.apiUrl}/search`;
+// params = `&api_key=${this.apiKey}&language=ru-Ru`;
 
-imgPath = 'https://image.tmdb.org/t/p' ;
-midImgPath = `${this.imgPath}/w500`;
-smallImgPath = `${this.imgPath}/w185`;
-bigBackPath = `${this.imgPath}/w1280`;
-midBackPath = `${this.imgPath}/w780`;
-smallBackPath = `${this.imgPath}/w300`;
+// imgPath = 'https://image.tmdb.org/t/p' ;
+// midImgPath = `${this.imgPath}/w500`;
+// smallImgPath = `${this.imgPath}/w185`;
+// bigBackPath = `${this.imgPath}/w1280`;
+// midBackPath = `${this.imgPath}/w780`;
+// smallBackPath = `${this.imgPath}/w300`;
 
+resultFilm;
 getPopularFilms(page?: number) {
-  return this.http.get<Moviedb>(`${this.movieUrl}/popular?page=${page}${this.params}`);
-    }
+  return this.http.get<Moviedb>(`${this.apiConfig.movieUrl}/popular?page=${page}${this.apiConfig.params}`);
+}
+
+searchFilm(searchedFilm: string) {
+  return this.http.get<any>(`${this.apiConfig.seacrhMovieUrl}?${this.apiConfig.params}&query=${searchedFilm}&page=1&include_adult=false`);
+}
+
 //   films: Film [] = [
 // tslint:disable-next-line:max-line-length
 //     {id: 1, isFavorite: false, name: 'Тор: Рагнарёк', year: '2017', imgUrl: 'https://image.tmdb.org/t/p/w300_and_h450_bestv2/2NEzIdBAgm4kSYXF4OH86qs3a0u.jpg', description: 'Вернувшись в Асгард в поисках таинственного врага, ведущего охоту на Камни Бесконечности, Тор обнаруживает, что действия его брата Локи, захватившего трон Асгарда, привели к приближению наиболее страшного события — Рагнарёка.'},

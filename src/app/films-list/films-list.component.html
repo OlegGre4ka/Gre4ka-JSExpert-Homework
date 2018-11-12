@@ -1,27 +1,66 @@
 <!-- якщо ng-container то css правила по класу не працюють??? -->
 
 <div class="flex-spinner" *ngIf="renderedSpinner">
-  <span class="spinner spinner-inverse">
-    Loading...
-  </span>
-  <span>
-    Loading...
-  </span>
+  <span class="spinner spinner-inverse"> Loading... </span>
+  <span> Loading... </span>
 </div>
 
-<mat-grid-list class="grid" cols="4" rowHeight="750px">
-  <mat-grid-tile *ngFor="let film of displayedFilmsData">
+<!-- <mat-grid-list class="grid" cols="4" rowHeight="750px"> -->
+<div class="clr-row grid" rowHeight="750px">
+  <!-- <div class="alert alert-success" role="alert" *ngIf="isShowAlert">
+    <h5>Фільмів з такою назвою не знайдено</h5>
+  </div> -->
+
+  <div class="clr-col-12 alert alert-danger" *ngIf="isShowAlert">
+      <div class="alert-items">
+        <div class="alert-item static">
+            <h5>Фільмів з такою назвою не знайдено</h5>
+        </div>
+      </div>
+    </div>
+
+  <div class="clr-col-12 alert alert-success" *ngIf="isFullList">
+    <div class="alert-items">
+      <div class="alert-item static">
+        <h5
+          class="alert-text full-list"
+          (click)="addMoreFilms(); isFullList = false"
+        >
+          Завантажити весь список
+        </h5>
+      </div>
+    </div>
+  </div>
+  <!--
+    <div class="alert alert-success" *ngIf="isFullList">
+      <h5 class="full-list" (click)="addMoreFilms(); isFullList = false">
+        Завантажити весь список
+      </h5>
+    </div>
+  -->
+  <!-- <mat-grid-tile *ngFor="let film of displayedFilmsData"> -->
+  <div class="clr-col-3" *ngFor="let film of displayedFilmsData">
     <app-film-item [filmItem]="film"></app-film-item>
-    <!-- каунтер пока закоментовано, взвязку з відсутністю поля isFavorite в даних з серверу -->
+    <!--
+      каунтер пока закоментовано, взвязку з відсутністю поля isFavorite в даних з серверу
+    -->
     <!-- (updateCounter)="addFilmObj($event)" -->
-  </mat-grid-tile>
-  <mat-card *ngIf="isShowAlert">
-    <h5>
-      Фільмів з такою назвою не знайдено
-    </h5>
-  </mat-card>
-</mat-grid-list>
-<!-- кнопку підгрузки потрібно прописати окремо і в Фільми, і окремо в Актори -->
+  </div>
+  <!--
+    <div class="alert alert-success" *ngIf="isShowAlert">
+      <h5>Фільмів з такою назвою не знайдено</h5>
+    </div>
+    <div class="alert alert-success" *ngIf="isFullList">
+      <h5 class="full-list" (click)="addMoreFilms(); isFullList = false">
+        Завантажити весь список
+      </h5>
+    </div>
+  -->
+</div>
+
+<!--
+  кнопку підгрузки потрібно прописати окремо і в Фільми, і окремо в Актори
+-->
 <div class="btn-addYetFilms">
-  <button mat-stroked-button (click)="addMoreFilms()">{{btn_title}}</button>
+  <button mat-stroked-button (click)="addMoreFilms()">{{ btn_title }}</button>
 </div>

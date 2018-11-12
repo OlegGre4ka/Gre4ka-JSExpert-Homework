@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { apiConfig, API_CONFIG } from './models/api.config';
 
 
 @NgModule({
@@ -47,6 +48,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatSelectModule,
     MatToolbarModule,
     MatTooltipModule,
+  ],
+  providers: [
+    { provide: API_CONFIG, useValue: apiConfig }
   ]
 })
 export class SharedModule { }
