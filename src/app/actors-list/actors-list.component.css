@@ -2,6 +2,9 @@
   margin-top:60px;
 
 }
+.clr-row{
+  margin-right:0;
+}
 .flex-spinner{
     display: flex;
   justify-content: center;

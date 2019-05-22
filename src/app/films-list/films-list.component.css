@@ -10,25 +10,15 @@
   padding:20px 20px;
 }
 
-
-/* .isFavorite{
-    margin-left:50px;
-}
-.isFavorite:hover{
-    cursor: pointer;
-    color:rgb(3, 219, 21);
-} */
 .example-full-width{
     width:600px;
 }
-/* .select[placeholder]{
-    color:#00897B;
-}
-.warn{
-    color:#E91E63;
-}*/
+.clr-row{
+    margin-right:0;
+  }
 .grid{
     margin-top:40px;
+
 
 }
 .clr-col-12{
