@@ -17,6 +17,10 @@
   margin-bottom:40px;
 
 }
+.arrow-top{
+  margin-right:15px;
+  cursor:pointer;
+}
 .btn-addMoreActors button{
   color:rgb(240, 133, 133);
   background-color: rgb(39, 39, 180);

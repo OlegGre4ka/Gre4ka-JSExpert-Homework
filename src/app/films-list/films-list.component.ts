@@ -26,6 +26,8 @@ export class FilmsListComponent implements OnInit, OnDestroy {
   btn_title = 'Завантажити ще';
   isPressed = false;
   subscription: Subscription;
+  x=0;
+  y=0;
 
   //  початкова кількість фільмів доданих у Вибране - з сервісу приходить як isFavorite = true
   // startCounter() {
@@ -180,6 +182,11 @@ export class FilmsListComponent implements OnInit, OnDestroy {
         'title': film.title
       }
     })
+  }
 
+  moveToTop(x:number,y:number){
+this.x=x;
+this.y=y;
+window.scrollTo(this.x,this.y)
   }
 }

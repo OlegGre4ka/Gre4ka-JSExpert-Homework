@@ -33,5 +33,9 @@
   кнопку підгрузки потрібно прописати окремо і в Фільми, і окремо в Актори
 -->
 <div class="btn-addYetFilms">
+    <i title="На початок сторінки!"class="material-icons arrow-top"
+    (click)="moveToTop()">
+        arrow_upward
+        </i>
   <button mat-stroked-button (click)="addMoreFilms()">{{ btn_title }}</button>
 </div>

@@ -13,8 +13,10 @@ export class ActorsListComponent implements OnInit, OnDestroy {
   currentActorPage = 0;
   btn_title = 'Завантажити ще';
   inputName;
-  isShowAlert;
+  isShowAlert:boolean;
   renderedSpinner = true;
+  x=0;
+  y=0;
 
   // змінні для роботи з actor-item
   actors: ResultActor[] = [];
@@ -89,4 +91,9 @@ export class ActorsListComponent implements OnInit, OnDestroy {
         });
 
   }
+  moveToTop(x:number,y:number){
+    this.x=x;
+    this.y=y;
+    window.scrollTo(this.x,this.y)
+      }
 }
