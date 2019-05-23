@@ -15,7 +15,7 @@ import { API_CONFIG } from "../shared/models/api.config";
   styleUrls: ["./films-list.component.css"]
 })
 export class FilmsListComponent implements OnInit, OnDestroy {
-  countElement;
+  // countElement;
   renderedSpinner = true;
   films: Result[] = [];
   displayedFilmsData: Result[];
@@ -46,7 +46,7 @@ export class FilmsListComponent implements OnInit, OnDestroy {
     private searchFilmServise: SeachDataService,
     private seach_subject: SeachDataService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.addMoreFilms();
@@ -74,7 +74,7 @@ export class FilmsListComponent implements OnInit, OnDestroy {
     // this.isFullList = false;
     setTimeout(() => {
       this.isShowAlert = false;
-    // this.isFullList = true;
+      // this.isFullList = true;
 
     }, 3000);
   }
@@ -157,7 +157,7 @@ export class FilmsListComponent implements OnInit, OnDestroy {
               this.inputName,
               'ловимо значення методу getSearchData() в films-list'
             );
-          } else  if (this.displayedFilmsData.length !== 0) { this.isFullList = true; }
+          } else if (this.displayedFilmsData.length !== 0) { this.isFullList = true; }
           // Роблю копію і далі працюю з копією
           // this.displayedFilmsData = [...this.films];
           this.renderedSpinner = false;
@@ -172,5 +172,14 @@ export class FilmsListComponent implements OnInit, OnDestroy {
     );
   }
 
- 
+  moveToFilm(id: number, film: Result) {
+    console.log(id,film.title)
+    this.router.navigate([`films-list/${id}`], {
+      queryParams: {
+        'id':film.id,
+        'title': film.title
+      }
+    })
+
+  }
 }

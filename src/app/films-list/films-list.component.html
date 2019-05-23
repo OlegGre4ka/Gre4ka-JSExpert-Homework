@@ -5,59 +5,30 @@
   <span> Loading... </span>
 </div>
 
-<!-- <mat-grid-list class="grid" cols="4" rowHeight="750px"> -->
 <div class="clr-row grid" rowHeight="750px">
-  <!-- <div class="alert alert-success" role="alert" *ngIf="isShowAlert">
-    <h5>Фільмів з такою назвою не знайдено</h5>
-  </div> -->
 
   <div class="clr-col-12 alert alert-danger" *ngIf="isShowAlert">
-      <div class="alert-items">
-        <div class="alert-item static">
-            <h5>Фільмів з такою назвою не знайдено</h5>
-        </div>
+    <div class="alert-items">
+      <div class="alert-item static">
+        <h5>Фільмів з такою назвою не знайдено</h5>
       </div>
     </div>
+  </div>
 
   <div class="clr-col-12 alert alert-success" *ngIf="isFullList">
     <div class="alert-items">
       <div class="alert-item static">
-        <h5
-          class="alert-text full-list"
-          (click)="addMoreFilms(); isFullList = false"
-        >
+        <h5 class="alert-text full-list" (click)="addMoreFilms(); isFullList = false">
           Завантажити весь список
         </h5>
       </div>
     </div>
   </div>
-  <!--
-    <div class="alert alert-success" *ngIf="isFullList">
-      <h5 class="full-list" (click)="addMoreFilms(); isFullList = false">
-        Завантажити весь список
-      </h5>
-    </div>
-  -->
-  <!-- <mat-grid-tile *ngFor="let film of displayedFilmsData"> -->
   <div class="clr-col-md-3" *ngFor="let film of displayedFilmsData">
-    <app-film-item [filmItem]="film"></app-film-item>
-    <!--
-      каунтер пока закоментовано, взвязку з відсутністю поля isFavorite в даних з серверу
-    -->
-    <!-- (updateCounter)="addFilmObj($event)" -->
+    <app-film-item class="film" [filmItem]="film" (click)="moveToFilm(film.id,film)"></app-film-item>
   </div>
-  <!--
-    <div class="alert alert-success" *ngIf="isShowAlert">
-      <h5>Фільмів з такою назвою не знайдено</h5>
-    </div>
-    <div class="alert alert-success" *ngIf="isFullList">
-      <h5 class="full-list" (click)="addMoreFilms(); isFullList = false">
-        Завантажити весь список
-      </h5>
-    </div>
-  -->
 </div>
-
+<!-- <app-film-detailed></app-film-detailed> -->
 <!--
   кнопку підгрузки потрібно прописати окремо і в Фільми, і окремо в Актори
 -->

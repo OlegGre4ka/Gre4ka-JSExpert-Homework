@@ -1,6 +1,6 @@
 .example-card {
     margin-top:40px;  
-    margin-left:20px;
+    /* margin-left:20px; */
     background: linear-gradient(to right, rgb(126, 198, 211), rgb(83, 132, 141));
     
   }

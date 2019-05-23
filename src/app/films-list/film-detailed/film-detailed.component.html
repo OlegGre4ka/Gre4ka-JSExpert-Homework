@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="clr-col-md-3"></div>
+  <div class="col-col-md-6">
+    <div class="card"  *ngFor="let film of Film">
+
+      <div class="card-img">
+        <img src={{film.poster_path}}>
+      </div>
+      <div class="card-block">
+        <!-- <h4 class="card-title">{{film.title}}</h4>
+        <p>{{film.release_date}}</p> -->
+        <!-- <p class="card-text">
+          {{film.overview}}
+        </p> -->
+        <p>Рейтинг - {{film.popularity}}</p>
+      </div>
+
+      <div class="card-footer">
+
+      </div>
+    </div>
+  </div>
+  <div class="clr-col-md-3"*ngFor="let film of Film">
+      <h4 class="card-title">{{film.title}}</h4>
+        <p>{{film.release_date}}</p>
+        <p>
+          {{film.overview}}
+        </p>
+  </div>
+</div>

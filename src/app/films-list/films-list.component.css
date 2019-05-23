@@ -15,11 +15,13 @@
 }
 .clr-row{
     margin-right:0;
+    margin-left:0;
   }
 .grid{
     margin-top:40px;
-
-
+}
+.film{
+    cursor:pointer;
 }
 .clr-col-12{
   margin-top:0 !important;

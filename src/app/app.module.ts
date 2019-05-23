@@ -14,7 +14,7 @@ import { FilmItemComponent } from './films-list/film-item/film-item.component';
 import { ActorsListComponent } from './actors-list/actors-list.component';
 import { ActorItemComponent } from './actors-list/actor-item/actor-item.component';
 import { SearchComponent } from './search/search.component';
-import { DetailsComponent } from './details/details.component';
+import { FilmDetailedComponent } from './films-list/film-detailed/film-detailed.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,9 +23,8 @@ import { DetailsComponent } from './details/details.component';
     FilmItemComponent,
     ActorsListComponent,
     ActorItemComponent,
-
     SearchComponent,
-    DetailsComponent
+    FilmDetailedComponent,
   ],
   imports: [
     BrowserModule,
