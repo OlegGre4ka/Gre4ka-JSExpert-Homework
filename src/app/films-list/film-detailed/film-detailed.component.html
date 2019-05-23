@@ -1,5 +1,12 @@
 <div class="row">
-  <div class="clr-col-md-3"></div>
+  <div class="clr-col-md-3">
+      <i title="Back!" class="material-icons back-icon"
+      (click)="moveToBack()"
+      >
+          fast_rewind
+          </i>
+          <!-- <span class="span-back">Back!</span> -->
+  </div>
   <div class="col-col-md-6">
     <div class="card"  *ngFor="let film of Film">
 

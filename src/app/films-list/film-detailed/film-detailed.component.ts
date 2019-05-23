@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { SeachDataService } from 'src/app/shared/services/seach-data.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FilmService } from 'src/app/shared/services/film.service';
 import { Config } from 'src/app/shared/models/config';
@@ -19,7 +19,7 @@ export class FilmDetailedComponent implements OnInit {
   id:number;
   films: Result[] = [];
   Film:Result[]=[];
-  constructor(/*private filmsService: SeachDataService,*/private filmsService: FilmService,
+  constructor(  private router: Router,private filmsService: FilmService,
     @Inject(API_CONFIG) public apiConfig: Config,
     private route: ActivatedRoute) { }
 
@@ -30,7 +30,6 @@ export class FilmDetailedComponent implements OnInit {
         this.id = +queryParam['id'];
       }
     );
-    // this.searchData.setSearchData(this.title);
     this.films = [];
     this.filmsService.searchFilm(this.title).subscribe(
       filmsData => {
@@ -48,5 +47,8 @@ export class FilmDetailedComponent implements OnInit {
      this.Film =this.films.filter(item=>{return item.id===this.id})
         })
       })
+  }
+  moveToBack(){
+    this.router.navigate([`films-list`])
   }
 }
